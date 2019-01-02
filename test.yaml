@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: akiro-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: akiro-app
+  template:
+    metadata:
+      labels:
+        run: akiro-app
+    spec:
+      containers:
+      - name: hello-app
+        image: gcr.io/firm-link-206720/hello-app@sha256:d16e4a2945d9c38a4ae5aac978b4e45610cde8a353e95d3f8dfe34ca3bd39b4b
+        env:
+        - name: "PORT"
+          value: "80"
